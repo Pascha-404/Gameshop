@@ -32,8 +32,9 @@ async function shops() {
 
 
 async function deals() {
-    const deals = await axios.get('https://www.cheapshark.com/api/1.0/deals');
-
+    const deals = await axios.get(`https://www.cheapshark.com/api/1.0/deals`);
+    shops();
+    makeCards(deals.data);
 }
 
 const makeCards = (games) => {

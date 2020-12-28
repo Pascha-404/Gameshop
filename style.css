@@ -12,7 +12,7 @@ in 300, 300 italic, 400, 400 italic, 700 and 700 italic
 
 body {
     width: 100%;
-    height: 100vh;
+    box-sizing: border-box;
     background-color: rgb(38, 33, 2, 0.8);
     font-family: 'Roboto Condensed', sans-serif;
 }
@@ -25,74 +25,7 @@ body {
     background-size: cover;
 }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgb(218, 198, 100);
-    box-shadow: 0px 2px 2px 1px rgba(255, 255, 255, 0.801);
-}
-
-.nav-links {
-    width: 28%;
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-
-}
-
-.nav-links li {
-    display: inline-block;
-    font-size: 20px;
-    font-family: 'Audiowide', cursive;
-}
-
-.search {
-    width: 52%;
-    display: flex;
-}
-
-.cart-pic-container {
-    width: 20%;
-}
-
-.searchForm {
-    width: 80%;
-}
-
-#searchInput {
-    width: 45rem;
-}
-
-.items-container {
-    color: white;
-    font-size: 22px;
-    position: absolute;
-    top: 4.5rem;
-    right: 2rem;
-    height: 400px;
-    width: 300px;
-    border: 1px solid black;
-    background-color: rgb(0, 0, 0, 0.3);
-    border-radius: 7px;
-    box-shadow: 7px 5px 5px rgba(0, 0, 0, 0.479);
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-
-}
-
-#itemsList {
-    list-style: none;
-    padding: 3px;
-    overflow: auto;
-}
-
-
-
-#closeCart {
+#closeCart, #closeFilter {
     background-color: transparent;
     border: none;
     position: absolute;
@@ -100,8 +33,49 @@ body {
     right: 5px;
 }
 
-.totalPrice {
-    border-top: 1px solid white;
+.hidden {
+    display: none;
+}
+
+main.container {
+    width: 90%;
+    color: #ffffff;
+
+}
+
+#categorie {
+padding-left: 20px;
+    font-size: 50px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.gameContainer {
+    display: inline-block;
     width: 100%;
-    margin: 0;
+}
+
+#gameList {
+    width: 100%;
+    list-style: none;
+   padding-left: 20px;
+}
+
+.card {
+    display:inline-block;
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.card, .card-body {
+    width: 16rem;
+    background-color: rgb(0, 0, 0,0.3);
+}
+
+.card-body a, #addToCart {
+    background-color: rgb(184, 236, 218);
+    color:rgb(0, 0, 0)
+}
+#addToCart {
+    margin-left: 10px;
 }

@@ -117,11 +117,16 @@ main.container {
 }
 
 .card-body a,
-#addToCart {
+.addToCart {
     background-color: rgb(184, 236, 218);
     color: rgb(0, 0, 0)
 }
 
-#addToCart {
-    margin-left: 10px;
+button.addToCart {
+    margin-left: 10px !important;
+}
+
+.addToCart svg{
+    width: 25px;
+    height: 20px;
 }

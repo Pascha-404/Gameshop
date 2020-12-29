@@ -1,3 +1,3 @@
 # Gameshop
-// It is a website for selling games online. I'm working with a logic for a cart-system and a api which is made available by an online-shop.
+// It is a website for movies with informations about rating and playtime. I'm working with a logic for a cart-system, to show how much time will be spend. The api is provided by TVmaze.
 

@@ -6,9 +6,6 @@ font-family: 'Roboto Condensed', sans-serif;
 in 300, 300 italic, 400, 400 italic, 700 and 700 italic
  */
 
-* {
-    /* border: 1px solid black; */
-}
 
 body {
     width: 100%;
@@ -20,7 +17,7 @@ body {
 .banner {
     width: 100%;
     height: 12em;
-    background-image: url(/images/GameOver.png);
+    background-image: url(./images/GameOver.png);
     background-position: center;
     background-size: cover;
 }
@@ -52,13 +49,13 @@ main.container {
     color: #ffffff;
 }
 
-.gameContainer {
+.movieContainer {
     display: inline-block;
     width: 100%;
 }
 
 /* !!!!!!!!!!!! <- Card Styling -> !!!!!!!!!!!! */
-#gameList {
+#movieList {
     width: 100%;
     list-style: none;
     padding-left: 20px;
@@ -105,28 +102,23 @@ main.container {
     line-height: 150%;
 }
 
-.titleContainer img {
+.rating {
+    text-align: center;
     display: inline-block;
     margin: 5px 0 5px 0;
     width: 35%;
-    background-color: black;
+    /* background-color: black; */
 }
 
 .card-text {
     margin-top: 1rem;
 }
 
-.card-body a,
-.addToCart {
+.card-body a{
     background-color: rgb(184, 236, 218);
     color: rgb(0, 0, 0)
 }
 
-button.addToCart {
-    margin-left: 10px !important;
-}
-
-.addToCart svg{
-    width: 25px;
-    height: 20px;
+.btn-group .btn:nth-of-type(2) {
+    margin-left: 5px !important;
 }

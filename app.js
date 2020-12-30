@@ -5,6 +5,7 @@ const filterBtn = document.querySelector('#filterBtn')
 
 const itemsBox = document.querySelector('.items-container')
 const closeCart = document.querySelector('#closeCart')
+const cart = document.querySelector('#cart')
 
 closeCart.addEventListener('click', () => {
     itemsBox.classList.toggle('hidden');
@@ -25,23 +26,26 @@ closeFilter.addEventListener('click', () => {
 
 let movieList = document.querySelector('#movieList')
 
-async function movies() {
-    const movies = await axios.get(`http://api.tvmaze.com/shows?`);
-    console.log(movies.data)
-    makeCards(movies.data);
+let movieCache = '';
+
+async function movieGet() {
+    movieCache = await axios.get(`http://api.tvmaze.com/shows?`);
+    makeCards(movieCache.data);
 }
 
-let i = 0;
+// const sortData = (moviecache)
 
-const makeCards = (movies) => {
-    for (let results of movies) {
+const makeCards = (movieCache) => {
+    let i = 0;
+    for (let results of movieCache) {
         i++
         if (i < 20) {
+
             const card = document.createElement('li');
             card.classList.add('card');
 
             const savings = document.createElement('p');
-            const savingsValue = results.runtime
+            const savingsValue = results.runtime;
             savings.id = 'savings';
             savings.textContent = `${savingsValue} min`
             card.append(savings)
@@ -68,7 +72,7 @@ const makeCards = (movies) => {
             ratingText.classList.add('rating');
             ratingText.textContent = `Rating: ${rating}`;
 
-            titleContainer.append(rating);
+            titleContainer.append(ratingText);
 
             cardBody.append(titleContainer)
 
@@ -85,12 +89,14 @@ const makeCards = (movies) => {
             const goToPage = document.createElement('a');
             goToPage.classList.add('btn');
             goToPage.href = results.url;
+            goToPage.target = '_blank'
             goToPage.textContent = 'Go to Movie';
             btnGroup.append(goToPage);
             const officPage = document.createElement('a');
             officPage.classList.add('btn');
             officPage.textContent = 'Official Page';
             officPage.href = results.officialSite;
+            officPage.target = '_blank'
             btnGroup.append(officPage)
 
             cardBody.append(btnGroup)
@@ -98,8 +104,7 @@ const makeCards = (movies) => {
             card.append(cardBody)
 
             movieList.append(card)
-            console.log('DONE')
+
         }
     }
 }
-

@@ -9,12 +9,12 @@
 .nav-links {
     width: 28%;
     display: flex;
-    flex-direction: row;
     list-style: none;
 
 }
 
 .nav-links li {
+
     display: inline-block;
     font-size: 20px;
     font-family: 'Audiowide', cursive;

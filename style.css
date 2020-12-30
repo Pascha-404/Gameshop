@@ -8,6 +8,7 @@ in 300, 300 italic, 400, 400 italic, 700 and 700 italic
 
 
 body {
+    color: white;
     width: 100%;
     box-sizing: border-box;
     background-color:  #334F36;
@@ -80,9 +81,9 @@ main.container {
     position: absolute;
     top: 10px;
     right: 0px;
-    color: rgb(218, 198, 100);
+    color: #ffffff;
    font-weight: 700;
-  width: 70px;
+  width: 100px;
    font-size: 30px;
    background-color: rgb(0,0,0,0.5);
    text-align: center;
@@ -102,11 +103,13 @@ main.container {
 }
 
 .rating {
+    position:  absolute;
     text-align: center;
-    display: inline-block;
-    margin: 5px 0 5px 0;
+    bottom: 140px;
+    right: 0;
     width: 35%;
-    /* background-color: black; */
+    /* color: rgb(218, 198, 100); */
+    background-color: black;
 }
 
 .card-text {

@@ -25,14 +25,18 @@ closeFilter.addEventListener('click', () => {
 
 let movieList = document.querySelector('#movieList')
 
-async function deals() {
-    const deals = await axios.get(`http://api.tvmaze.com/shows?`);
-    makeCards(deals.data);
+async function movies() {
+    const movies = await axios.get(`http://api.tvmaze.com/shows?`);
+    console.log(movies.data)
+    makeCards(movies.data);
 }
 
-const makeCards = (games) => {
-    for (let results = 0; results < 20; results++) {
-        if (results.image.medium) {
+let i = 0;
+
+const makeCards = (movies) => {
+    for (let results of movies) {
+        i++
+        if (i < 20) {
             const card = document.createElement('li');
             card.classList.add('card');
 
@@ -59,10 +63,10 @@ const makeCards = (games) => {
             cardTitle.textContent = results.name;
             titleContainer.append(cardTitle);
 
-            const rating = results.rating.avarage;
+            const rating = results.rating.average;
             const ratingText = document.createElement('p');
-            rating.classList.add('rating')
-            rating.textContent = `Rating: ${rating}`
+            ratingText.classList.add('rating');
+            ratingText.textContent = `Rating: ${rating}`;
 
             titleContainer.append(rating);
 
@@ -81,10 +85,11 @@ const makeCards = (games) => {
             const goToPage = document.createElement('a');
             goToPage.classList.add('btn');
             goToPage.href = results.url;
-            goToPage.textContent = 'Go to Movie-Page';
+            goToPage.textContent = 'Go to Movie';
             btnGroup.append(goToPage);
             const officPage = document.createElement('a');
             officPage.classList.add('btn');
+            officPage.textContent = 'Official Page';
             officPage.href = results.officialSite;
             btnGroup.append(officPage)
 
@@ -93,6 +98,8 @@ const makeCards = (games) => {
             card.append(cardBody)
 
             movieList.append(card)
+            console.log('DONE')
         }
     }
 }
+

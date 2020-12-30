@@ -10,16 +10,15 @@ in 300, 300 italic, 400, 400 italic, 700 and 700 italic
 body {
     width: 100%;
     box-sizing: border-box;
-    background-color: rgb(38, 33, 2, 0.8);
+    background-color:  #334F36;
     font-family: 'Roboto Condensed', sans-serif;
 }
 
 .banner {
     width: 100%;
     height: 12em;
-    background-image: url(./images/GameOver.png);
-    background-position: center;
-    background-size: cover;
+    background: center/cover url(./images/banner3.png);
+
 }
 
 #closeCart,

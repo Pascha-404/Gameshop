@@ -30,12 +30,13 @@ let movieCache = '';
 
 async function movieGet() {
     movieCache = await axios.get(`http://api.tvmaze.com/shows?`);
-    makeCards(movieCache.data);
+    makeCardsRandom(movieCache.data);
 }
+movieGet()
 
-const makeCards = (movieCache) => {
+const makeCardsRandom = (data) => {
     let i = 0;
-    for (let results of movieCache) {
+    for (let results of data) {
         i++
         if (i < 20) {
 
@@ -94,6 +95,100 @@ const makeCards = (movieCache) => {
             officPage.classList.add('btn');
             officPage.textContent = 'Official Page';
             officPage.href = results.officialSite;
+            officPage.target = '_blank'
+            btnGroup.append(officPage)
+
+            cardBody.append(btnGroup)
+
+            card.append(cardBody)
+
+            movieList.append(card)
+
+        }
+    }
+}
+
+// Search Form
+
+const h1 = document.querySelector('#categorie')
+const searchForm = document.querySelector('#searchForm');
+
+searchForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    movieList.innerHTML = '';
+    const searchTerm = searchForm.elements.searchInput.value;
+    const config = {
+        params: {
+            q: searchTerm
+        }
+    }
+    const search = await axios.get(`http://api.tvmaze.com/search/shows?`, config)
+    makeCards(search.data)
+    h1.textContent = searchTerm;
+    searchForm.elements.searchInput.value = '';
+})
+
+const makeCards = (data) => {
+    let i = 0;
+    for (let results of data) {
+        i++
+        if (i < 20 && results.show.image && results.show.rating && results.show.schedule) {
+
+            const card = document.createElement('li');
+            card.classList.add('card');
+
+            const savings = document.createElement('p');
+            const savingsValue = results.show.runtime;
+            savings.id = 'savings';
+            savings.textContent = `${savingsValue} min`
+            card.append(savings)
+
+            const cardImg = document.createElement('img');
+            cardImg.classList.add('card-img-top');
+            cardImg.src = results.show.image.medium;
+            cardImg.alt = `${results.show.name} - Cover`
+            card.append(cardImg)
+
+            const cardBody = document.createElement('div');
+            cardBody.classList.add('card-body');
+
+            const titleContainer = document.createElement('div');
+            titleContainer.classList.add('titleContainer');
+
+            const cardTitle = document.createElement('h5');
+            cardTitle.classList.add('card-title');
+            cardTitle.textContent = results.show.name;
+            titleContainer.append(cardTitle);
+
+            const rating = results.show.rating.average;
+            const ratingText = document.createElement('p');
+            ratingText.classList.add('rating');
+            ratingText.textContent = `Rating: ${rating}`;
+
+            titleContainer.append(ratingText);
+
+            cardBody.append(titleContainer)
+
+            const cardText = document.createElement('p');
+            cardText.classList.add('card-text');
+            const playDay = results.show.schedule.days;
+            const playTime = results.show.schedule.time;
+            cardText.textContent = `Runs on ${playDay} at ${playTime}`;
+            cardBody.append(cardText)
+
+            const btnGroup = document.createElement('div');
+            btnGroup.classList.add('btn-group');
+
+            const goToPage = document.createElement('a');
+            goToPage.classList.add('btn');
+            goToPage.href = results.show.url;
+            goToPage.target = '_blank'
+            goToPage.textContent = 'Go to Movie';
+            btnGroup.append(goToPage);
+            const officPage = document.createElement('a');
+            officPage.classList.add('btn');
+            officPage.textContent = 'Official Page';
+            officPage.href = results.show.officialSite;
             officPage.target = '_blank'
             btnGroup.append(officPage)
 

@@ -33,8 +33,6 @@ async function movieGet() {
     makeCards(movieCache.data);
 }
 
-// const sortData = (moviecache)
-
 const makeCards = (movieCache) => {
     let i = 0;
     for (let results of movieCache) {
